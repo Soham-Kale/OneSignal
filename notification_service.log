@@ -1,0 +1,63 @@
+2025-07-16 15:10:53,878 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.145.23:5000
+2025-07-16 15:10:53,878 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-16 15:10:53,885 - INFO -  * Restarting with stat
+2025-07-16 15:10:58,055 - WARNING -  * Debugger is active!
+2025-07-16 15:10:58,065 - INFO -  * Debugger PIN: 733-662-076
+2025-07-16 15:11:12,348 - INFO - 127.0.0.1 - - [16/Jul/2025 15:11:12] "GET / HTTP/1.1" 200 -
+2025-07-16 15:11:22,433 - INFO - 127.0.0.1 - - [16/Jul/2025 15:11:22] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-16 15:11:24,282 - INFO - 127.0.0.1 - - [16/Jul/2025 15:11:24] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+2025-07-16 15:11:24,429 - INFO - 127.0.0.1 - - [16/Jul/2025 15:11:24] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-16 15:13:14,439 - INFO - 127.0.0.1 - - [16/Jul/2025 15:13:14] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-16 15:13:16,583 - ERROR - Failed to send to abcdg: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 15:13:17,309 - ERROR - Failed to send to Test224: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 15:13:18,025 - ERROR - Failed to send to SohamKale: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 15:13:18,663 - ERROR - Failed to send to Harsh27: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 15:13:18,664 - INFO - 127.0.0.1 - - [16/Jul/2025 15:13:18] "POST /upload HTTP/1.1" 200 -
+2025-07-16 15:13:18,718 - INFO - 127.0.0.1 - - [16/Jul/2025 15:13:18] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-16 15:15:30,332 - INFO -  * Detected change in 'C:\\Users\\Admin\\Downloads\\One_signal\\app.py', reloading
+2025-07-16 15:15:30,730 - INFO -  * Restarting with stat
+2025-07-16 16:17:34,194 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.145.23:5000
+2025-07-16 16:17:34,196 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-16 16:17:34,203 - INFO -  * Restarting with stat
+2025-07-16 16:17:38,759 - WARNING -  * Debugger is active!
+2025-07-16 16:17:38,773 - INFO -  * Debugger PIN: 733-662-076
+2025-07-16 16:17:39,391 - INFO - 127.0.0.1 - - [16/Jul/2025 16:17:39] "GET / HTTP/1.1" 200 -
+2025-07-16 16:17:47,873 - INFO - 127.0.0.1 - - [16/Jul/2025 16:17:47] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+2025-07-16 16:18:56,616 - INFO -  * Detected change in 'C:\\Users\\Admin\\Downloads\\One_signal\\app.py', reloading
+2025-07-16 16:18:56,998 - INFO -  * Restarting with stat
+2025-07-16 16:19:02,120 - WARNING -  * Debugger is active!
+2025-07-16 16:19:02,132 - INFO -  * Debugger PIN: 733-662-076
+2025-07-16 16:19:04,616 - ERROR - Failed to send to abcdg: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 16:19:05,528 - ERROR - Failed to send to Test224: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 16:19:06,236 - ERROR - Failed to send to SohamKale: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 16:19:06,933 - ERROR - Failed to send to Harsh27: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 16:19:07,777 - ERROR - Failed to send to Soham: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 16:19:07,779 - INFO - 127.0.0.1 - - [16/Jul/2025 16:19:07] "POST /upload HTTP/1.1" 200 -
+2025-07-16 16:19:32,690 - INFO - 127.0.0.1 - - [16/Jul/2025 16:19:32] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-16 16:19:37,047 - ERROR - Failed to send to abcdg: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 16:19:37,778 - ERROR - Failed to send to Test224: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 16:19:38,405 - ERROR - Failed to send to SohamKale: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 16:19:39,103 - ERROR - Failed to send to Harsh27: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 16:19:39,802 - ERROR - Failed to send to Soham: 400 Client Error: Bad Request for url: https://onesignal.com/api/v1/notifications
+2025-07-16 16:19:39,803 - INFO - 127.0.0.1 - - [16/Jul/2025 16:19:39] "POST /upload HTTP/1.1" 200 -
+2025-07-16 16:19:39,894 - INFO - 127.0.0.1 - - [16/Jul/2025 16:19:39] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-07-16 16:21:49,822 - INFO -  * Detected change in 'C:\\Users\\Admin\\Downloads\\One_signal\\app.py', reloading
+2025-07-16 16:21:50,147 - INFO -  * Restarting with stat
+2025-07-16 16:21:54,670 - WARNING -  * Debugger is active!
+2025-07-16 16:21:54,681 - INFO -  * Debugger PIN: 733-662-076
+2025-07-16 16:22:05,996 - INFO -  * Detected change in 'C:\\Users\\Admin\\Downloads\\One_signal\\app.py', reloading
+2025-07-16 16:22:06,248 - INFO -  * Restarting with stat
+2025-07-16 16:22:09,827 - WARNING -  * Debugger is active!
+2025-07-16 16:22:09,835 - INFO -  * Debugger PIN: 733-662-076
+2025-07-16 16:22:19,066 - ERROR - Unexpected error: name 'send_one_signal_notification' is not defined
+2025-07-16 16:22:19,070 - INFO - 127.0.0.1 - - [16/Jul/2025 16:22:19] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+2025-07-16 16:23:09,764 - INFO -  * Detected change in 'C:\\Users\\Admin\\Downloads\\One_signal\\app.py', reloading
+2025-07-16 16:23:10,073 - INFO -  * Restarting with stat
+2025-07-16 16:23:18,660 - INFO -  * Restarting with stat
+2025-07-16 16:30:50,418 - INFO -  * Restarting with stat

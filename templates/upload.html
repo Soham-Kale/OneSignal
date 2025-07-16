@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Player ID Excel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+        OneSignal.init({
+            appId: "6f4012a8-c2b4-4e39-afcf-bcf4b29fabd9",
+            notifyButton: { enable: true }
+        });
+
+        // 👇 Replace with dynamic user ID from backend if available
+        OneSignal.setExternalUserId("Soham");
+
+        // Optional: trigger in-app manually
+        document.getElementById("triggerInApp").addEventListener("click", function () {
+            OneSignal.sendOutcome("trigger_in_app_message");
+        });
+        });
+    </script>
+</head>
+<body class="container mt-5">
+    <h2>Upload Excel File with Player IDs</h2>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <div class="mb-3">
+            <input type="file" name="file" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Notifications</button>
+    </form>
+</body>
+</html>  
+
+
+
