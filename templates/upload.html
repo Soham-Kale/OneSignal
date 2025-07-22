@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,6 +34,64 @@
     </form>
 </body>
 </html>  
+ -->
 
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Excel</title>
+</head>
+<body>
+    <h2>Upload Chess Match Excel File</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload & Notify</button>
+    </form>
 
+    <br>
+    <a href="/notifications">🔔 View In-App Notifications</a>
+
+    <br><br>
+
+    <!-- In-App Notification Button -->
+    <button onclick="sendInApp()">📩 Send In-App Notification</button>
+
+    <script>
+        function sendInApp() {
+        fetch('/send_notification', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: 'New match update available!' })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+            alert('✅ In-App Notification Sent!');
+            } else {
+            alert('❌ Error sending notification.');
+            }
+        });
+        }
+    </script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Excel</title>
+</head>
+<body>
+  <h2>Upload Chess Match Excel File</h2>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit">Upload & Notify</button>
+  </form>
+  <br>
+  <a href="/notifications">🔔 View In-App Notifications</a>
+</body>
+</html> -->

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>OneSignal In-App Message</title>
+    <style>
+        * {
+        box-sizing: border-box;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        }
+
+        body {
+        margin: 0;
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) calc(env(safe-area-inset-bottom) + 20px) env(safe-area-inset-left);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #f5f5f5;
+        }
+
+        .center-modal {
+        position: relative;
+        background: #fff;
+        padding: 24px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 500px;
+        width: 90%;
+        /* box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 12.5px, rgba(0, 0, 0, 0.15) 0px 0px 2.5px; */
+        }
+
+        .close-button {
+        position: absolute;
+        top: -30px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        font-size: 24px;
+        color: #888;
+        cursor: pointer;
+        }
+
+        .center-modal img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: contain;
+        margin-bottom: 12px;
+        }
+
+        .center-modal h1 {
+        margin: 0 0 12px;
+        color: #222;
+        font-size: 24px;
+        text-align: center;
+        }
+
+        .center-modal button {
+        font-size: 16px;
+        color: #fff;
+        background-color: #04080c;
+        width: 100%;
+        padding: 12px;
+        border-radius: 4px;
+        border: none;
+        margin-bottom: 12px;
+        cursor: pointer;
+        }
+
+        .button-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        }
+
+        @media (min-width: 480px) {
+        .button-container {
+            flex-direction: row;
+        }
+
+        .button-column {
+            width: 50%;
+        }
+        }
+
+        .notification {
+        margin-bottom: 12px;
+        text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="center-modal" id="notificationCard">
+        <p class="close-button" id="closeBtn">&times;</p>
+
+        {% for note in notifications %}
+        <div class="notification">
+            <div>
+                <!-- <strong>Message:</strong>  -->
+                {{ note.message }}</div>
+            <!-- <div><strong>Sent:</strong> {{ note.sent_time }}</div> -->
+            <hr>
+        </div>
+        {% endfor %}
+
+        <img src="{{ url_for('static', filename='MIT-event.jpeg') }}" alt="Event Image" />
+        
+        <div class="button-container">
+            <div class="button-column">
+                <button class="add-click-name" data-onesignal-unique-label="my-add-click-name-button">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script>
+        document.getElementById("closeBtn").addEventListener("click", function () {
+        const card = document.getElementById("notificationCard");
+        if (card) card.remove();
+        });
+
+        document.querySelector(".add-click-name").addEventListener("click", function(e) {
+        OneSignalIamApi.addClickName(e, "test_click_name");
+        });
+    </script> -->
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+        OneSignal.init({
+        appId: "6f4012a8-c2b4-4e39-afcf-bcf4b29fabd9",
+        });
+
+        // OPTIONAL: Tag user for filtering
+        // OneSignal.sendTags({ user_id: "114df19b-f623-437b-9de2-dd786ed96dd3" });
+        OneSignal.InAppMessages.addTrigger("abcdg", "114df19b-f623-437b-9de2-dd786ed96dd3");
+    });
+    </script>
+</body>
+</html>
