@@ -24,7 +24,7 @@ ONESIGNAL_API_KEY = "os_v2_app_n5abfkgcwrhdtl6pxt2lfh5l3hvd5qzyhpsuukek4qpyq34bk
 def index():
     return render_template('upload.html')
 
-@app.route('/upload', methods=['POST'])
+@app.route('/api/upload', methods=['POST'])
 def upload():
     if 'file' not in request.files:
         return "❌ No file part in the request.", 400
