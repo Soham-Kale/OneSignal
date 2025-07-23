@@ -7,6 +7,7 @@ import os
 
 app = Flask(__name__)
 CORS(app)
+
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -30,12 +31,13 @@ def upload():
     file = request.files['file']
     if file.filename == '':
         return "❌ No selected file.", 400
+
     filepath = os.path.join(UPLOAD_FOLDER, file.filename)
     file.save(filepath)
 
     df_all = pd.read_excel(filepath, header=None)
 
-    # Detect round number and start row index
+    # Detect round number and start row
     round_number = "Unknown"
     start_row_index = None
     for i in range(len(df_all)):
@@ -52,16 +54,25 @@ def upload():
 
     df = pd.read_excel(filepath, skiprows=start_row_index)
     df.columns = df.columns.str.strip()
-    required_columns = ['Bo.', 'White-UserName', 'White', 'Black-UserName', 'Black']
-    if not all(col in df.columns for col in required_columns):
-        return "❌ Missing required columns.", 400
 
+    # Detect 'Group' columns (usually 'Group' and 'Group.1')
+    group_cols = [col for col in df.columns if col.startswith("Group")]
+
+    if len(group_cols) != 2 or not all(col in df.columns for col in ['Bo.', 'White', 'Black']):
+        return "❌ Required columns missing or 'Group' columns not found.", 400
+
+    # Rename both Group columns
+    df = df.rename(columns={
+        group_cols[0]: 'White-UserName',
+        group_cols[1]: 'Black-UserName'
+    })
+
+    required_columns = ['Bo.', 'White-UserName', 'White', 'Black-UserName', 'Black']
     df = df[required_columns]
 
     notifications_sent = 0
     errors = []
 
-    # Load current in-app notifications
     with open(IN_APP_STORAGE, 'r') as f:
         in_app_data = json.load(f)
 
@@ -83,7 +94,6 @@ def upload():
 
             message = f"{round_number} | Your match with {opponent} on board {board_number}."
 
-            # 🔔 PUSH NOTIFICATION
             headers = {
                 "Content-Type": "application/json",
                 "Authorization": f"Basic {ONESIGNAL_API_KEY}"
@@ -91,7 +101,7 @@ def upload():
 
             payload = {
                 'app_id': ONESIGNAL_APP_ID,
-                'include_player_ids': ['114df19b-f623-437b-9de2-dd786ed96dd3'],  # Replace with dynamic
+                'include_player_ids': ['114df19b-f623-437b-9de2-dd786ed96dd3'],  # Replace with actual player ID logic
                 "contents": {"en": message},
                 "headings": {"en": "Chess Match Update"},
                 'category': 'card',
@@ -111,7 +121,7 @@ def upload():
             except Exception as e:
                 errors.append(f"{user_id}: Exception - {str(e)}")
 
-            # 📨 IN-APP NOTIFICATION (store in local JSON)
+            # In-app notification save
             in_app_data.append({
                 "user_id": user_id,
                 "message": message,
@@ -119,16 +129,13 @@ def upload():
                 "opponent": opponent
             })
 
-    # Save back
     with open(IN_APP_STORAGE, 'w') as f:
         json.dump(in_app_data, f, indent=2)
 
     if errors:
         return f"✅ Sent: {notifications_sent}<br>❌ Errors:<br>" + "<br>".join(errors), 207
-    # return redirect("Notifications sent successfully!"), 200
     return redirect(url_for('get_notifications'))
 
-# it return in-app notifications page
 @app.route('/notifications')
 def get_notifications():
     url = f"https://onesignal.com/api/v1/notifications?app_id={ONESIGNAL_APP_ID}"
@@ -142,7 +149,7 @@ def get_notifications():
         data = response.json()
         notifications = data.get("notifications", [])
 
-        with open("in_app_notifications.json", "r") as f:
+        with open(IN_APP_STORAGE, "r") as f:
             notifications_data = json.load(f)
 
         parsed_notifications = []
@@ -179,8 +186,9 @@ def send_notification():
     }
 
     response = requests.post("https://onesignal.com/api/v1/notifications",
-                             headers=headers,
-                             data=json.dumps(payload))
+        headers=headers,
+        data=json.dumps(payload)
+    )
 
     if response.status_code == 200:
         return jsonify({"success": True})
